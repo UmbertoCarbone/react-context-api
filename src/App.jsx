@@ -6,23 +6,13 @@ import ProductsPage from './pages/ProductsPage';
 import GetSingleProductsPage from './pages/GetSingleProductImage';
 import Error404 from './layouts/Error404';
 // context API
-import ProductContext from './context/ProductContext';
-import { useEffect, useState } from 'react';
+import { ProductProvider } from './context/ProductContext';
 
 
 export default function App() {
-
-  const [products, setProducts] = useState([]);
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then(res => res.json())
-      .then(data => setProducts(data));
-  }, []);
-
-
   return (
     // provider component
-    <ProductContext.Provider value={{ products: products }}>
+    <ProductProvider>
       <BrowserRouter>
         <Routes>
 
@@ -36,6 +26,6 @@ export default function App() {
           </Route>
         </Routes>
       </BrowserRouter>
-    </ProductContext.Provider>
+    </ProductProvider>
   )
 }

@@ -1,9 +1,10 @@
 import { useState, useEffect, useContext } from "react";
 import ProductGrid from "../components/ProductGrid";
-import ProductContext from "../context/ProductContext";
+import { useProductContext } from "../context/ProductContext";
+
 
 export default function ProductsPage() {
-    const { products } = useContext(ProductContext);
+    const { products } = useProductContext();
     const [userRatings, setUserRatings] = useState({});
 
 
