@@ -1,15 +1,11 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import ProductGrid from "../components/ProductGrid";
+import ProductContext from "../context/ProductContext";
 
 export default function ProductsPage() {
-    const [products, setProducts] = useState([]);
+    const { products } = useContext(ProductContext);
     const [userRatings, setUserRatings] = useState({});
 
-    useEffect(() => {
-        fetch("https://fakestoreapi.com/products")
-            .then(res => res.json())
-            .then(data => setProducts(data));
-    }, []);
 
     function renderStars(rate, productId) {
         const current = userRatings[productId];
