@@ -21,9 +21,7 @@ export default function ProductsPage() {
                 <span
                     key={i}
                     style={{ color: i <= currentRating ? "#ffc107" : "#e4e5e9", cursor: "pointer", fontSize: "1.2em" }}
-                    onClick={() => handleStarClick(productId, i)}
-                >
-                    ★
+                    onClick={() => handleStarClick(productId, i)}>★
                 </span>
             );
         }

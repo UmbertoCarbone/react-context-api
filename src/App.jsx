@@ -5,21 +5,27 @@ import AboutPage from './pages/AboutPage';
 import ProductsPage from './pages/ProductsPage';
 import GetSingleProductsPage from './pages/GetSingleProductImage';
 import Error404 from './layouts/Error404';
+// context API
+import GlobalContext from './context/GlobalContext';
 
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route Component={DefaultLayout}>
-          <Route index Component={HomePage} />
-          <Route path="*" element={<Error404 />} />
-          <Route path="/About" Component={AboutPage} />
-          <Route path="/Products" Component={ProductsPage} />
-          <Route path="/Products/:id" Component={GetSingleProductsPage} />
+    // provider component
+    <GlobalContext.Provider value={{test:"1"}}>
+      <BrowserRouter>
+        <Routes>
 
-        </Route>
-      </Routes>
-    </BrowserRouter>
+          <Route Component={DefaultLayout}>
+            <Route index Component={HomePage} />
+            <Route path="*" element={<Error404 />} />
+            <Route path="/About" Component={AboutPage} />
+            <Route path="/Products" Component={ProductsPage} />
+            <Route path="/Products/:id" Component={GetSingleProductsPage} />
+
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </GlobalContext.Provider>
   )
 }
